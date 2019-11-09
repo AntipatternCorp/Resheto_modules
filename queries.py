@@ -58,3 +58,16 @@ def upd_field(table_name, field, value, key_field, key, path = PATH_DEFAULLT):
         cursor.execute(sql, args)
         conn.commit()
     return True
+
+def set_executors (doc, path = PATH_DEFAULLT):
+    table_name='relation'
+    field='id_user'
+    key_field='id_doc'
+    key=str(doc)
+    type_comparison='='
+    with sqlite3.connect(path) as conn:
+        cursor = conn.cursor()
+        sql = 'select ' + str(field) + ' from ' + str(table_name) + ' where ' + str(key_field) + ' '+ str(type_comparison) +' ' + str(key) + ' and type = executor'
+        cursor.execute(sql)
+        rows = cursor.fetchall()
+    return rows
