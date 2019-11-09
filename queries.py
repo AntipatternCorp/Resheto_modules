@@ -40,8 +40,6 @@ def drop_data (table_name, key_field, key,path = PATH_DEFAULLT):
     connector(sql,path)
     return True
 
-
-
 def upd_field(table_name, field, value, key_field, key, path = PATH_DEFAULLT):
     sql = ''' UPDATE ?
               SET ? = ? 
