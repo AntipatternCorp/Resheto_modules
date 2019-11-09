@@ -35,17 +35,23 @@ def choice_attr (attrs1, attrs2):
 
     u1 = set_field (table_name = 'attributes', field = 'id_user', key_field = 'id_attr', key = str(attrs1))
     u2 = set_field (table_name = 'attributes', field = 'id_user', key_field = 'id_attr', key = str(attrs2))
-    r1 = set_field (table_name = 'users', field = 'rating', key_field = 'id_user', key = str(u1))
-    r2 = set_field (table_name = 'users', field = 'rating', key_field = 'id_user', key = str(u2))
+    r1 = int(set_field (table_name = 'users', field = 'rating', key_field = 'id_user', key = str(u1)))
+    r2 = int(set_field (table_name = 'users', field = 'rating', key_field = 'id_user', key = str(u2)))
     if r1 > r2:
-        attrs1.status = 1
-        attrs1.id_user.rating = r1 + 1
-        attrs2.id_user.rating = r2 - 1
+        #attrs1.status = 1
+        upd_field(table_name='attributes', field='status', value='1' , key_field='id_attr', key=str(attrs1))
+        #attrs1.id_user.rating = r1 + 1
+        upd_field(table_name='users', field='rating', value=str(r1 + 1), key_field = 'id_user', key = str(u1))
+        #attrs2.id_user.rating = r2 - 1
+        upd_field(table_name='users', field='rating', value=str(r2 - 1), key_field = 'id_user', key = str(u2))
         return True
     if r1 < r2:
-        attrs2.status = 1
-        attrs1.id_user.rating = r1 - 1
-        attrs2.id_user.rating = r2 + 1
+        #attrs2.status = 1
+        upd_field(table_name='attributes', field='status', value='1', key_field='id_attr', key=str(attrs2))
+        #attrs1.id_user.rating = r1 - 1
+        upd_field(table_name='users', field='rating', value=str(r1 - 1), key_field='id_user', key=str(u1))
+        #attrs2.id_user.rating = r2 + 1
+        upd_field(table_name='users', field='rating', value=str(r2 + 1), key_field='id_user', key=str(u2))
         return True
 
     if r1 == r2:
