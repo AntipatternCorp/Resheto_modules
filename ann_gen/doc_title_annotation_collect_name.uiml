@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-16"?>
+<?uimlDocument version="1.0"?>
+<Document>
+ <Title Value="doc_title" />
+ <Text Value="doc_text" />
+ <DocumentRubrics>
+ <Rubric Name="collect_name">
+   <EtalonAttribute Code="Система" StringValue="Решето" />
+   <EtalonAttribute Code="Год" StringValue="2019" />
+   <EtalonAttribute Code="Автор" StringValue="Никита" />
+  </Rubric>
+ </DocumentRubrics>
+</Document>
