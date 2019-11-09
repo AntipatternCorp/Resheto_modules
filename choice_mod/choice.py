@@ -33,5 +33,5 @@ def choice_attr (attrs1, attrs2):
         attrs1.id_user.rating = r1 - 1
         attrs2.id_user.rating = r2 + 1
         return True
-    
+
     pass
