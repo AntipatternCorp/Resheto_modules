@@ -34,4 +34,6 @@ def choice_attr (attrs1, attrs2):
         attrs2.id_user.rating = r2 + 1
         return True
 
-    pass
+    if r1 == r2:
+#TODO: переадресация документа
+        pass
