@@ -1,17 +1,18 @@
 from nltk.translate.bleu_score import sentence_bleu
-from queries import set_field,upd_field
+from queries import set_field,upd_field,insert_data, set_all_where, drop_data
+import random
 #attrs_text1 = 'имя = Иванов место = Москва организация = КПСС'
 #attrs_text2 = 'имя = Иванов место = Москва организация = КПРФ'
 #similarity(attrs_text1,attrs_text2)
 
-def similarity(attrs_text1, attrs_text2):
+def similarity(attrs_text1, attrs_text2): # подсчет похожести по BLEU
     attrs1 = []
     attrs1.append(attrs_text1.split(' '))
     attrs2 = attrs_text2.split(' ')
     score = sentence_bleu(attrs1, attrs2)
     return score
 
-def choice_attr (attrs1, attrs2):
+def choice_attr (attrs1, attrs2): # выбор между 2мя вариантами аттрибутов
     #doc = attrs1.id_doc
     doc = set_field (table_name = 'attributes', field = 'id_doc', key_field = 'id_attr', key = str(attrs1))
     #score = similarity(attrs1.text, attrs2.text)
@@ -56,4 +57,12 @@ def choice_attr (attrs1, attrs2):
 
     if r1 == r2:
 #TODO: переадресация документа
-        pass
+        user_list = set_all_where(table_name='users', field='id_user', key_field = 'rating', key = str(r1), type_comparison = '>')
+        i = random.randint(0,len(user_list)-1)
+        id_user = user_list[i]
+        #пусть будет три типа связи: author, executor, checker
+        rel = '\'' + str(id_user) + '\',  \'' + str(doc) + '\',  \'' + 'checker'
+        insert_data(table_name = 'relation', data = rel)
+        #добавили задание эксперту с более высоким рейтингом
+        #по окончании его работы вызывается функция check
+

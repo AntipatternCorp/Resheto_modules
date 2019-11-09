@@ -27,6 +27,14 @@ def set_all (table_name, path = PATH_DEFAULLT):# список всех
         rows = cursor.fetchall()
     return rows
 
+def set_all_where (table_name,field, key_field, key, type_comparison, path = PATH_DEFAULLT):# список всех
+    with sqlite3.connect(path) as conn:
+        cursor = conn.cursor()
+        sql = 'select ' + str(field) + ' from ' + str(table_name) + ' where ' + str(key_field) + ' '+ str(type_comparison) +' ' + str(key)
+        cursor.execute(sql)
+        rows = cursor.fetchall()
+    return rows
+
 def count (table_name, path = PATH_DEFAULLT):
     with sqlite3.connect(path) as conn:
         cursor = conn.cursor()
