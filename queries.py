@@ -16,11 +16,32 @@ def start_defaullt(path = PATH_DEFAULLT):
                       (id_doc INTEGER PRIMARY KEY,
                       rubric TEXT,
                       description TEXT,
-                      status INTEGER DEFAULT 0,
+                      status TEXT CHECK (status = 'red' OR status = 'yellow' OR status = 'green'),
                       address TEXT);
                    """
     connector(sql, path)
-
+    sql = """create table if not exists attributes
+                      (id_attr INTEGER PRIMARY KEY,
+                      id_doc INTEGER,
+                      id_user INTEGER, 
+                      attr_text TEXT,
+                      description TEXT,
+                      status INTEGER DEFAULT 0 CHECK (status >= 0 AND status <=1),
+                      FOREIGN KEY (id_doc) REFERENCES documents(id_doc)
+                      FOREIGN KEY (id_user) REFERENCES users(id_user)
+                      );
+                   """
+    connector(sql, path)
+    sql = """create table if not exists relation
+                      (id_relation INTEGER PRIMARY KEY,                      
+                      id_user INTEGER,
+                      id_doc INTEGER,
+                      type_rel TEXT CHECK (type_rel = 'checker' OR type_rel = 'executor' OR type_rel ='author'),
+                      FOREIGN KEY (id_doc) REFERENCES documents(id_doc)
+                      FOREIGN KEY (id_user) REFERENCES users(id_user)
+                      );
+                   """
+    connector(sql, path)
     return True
 
 def connector(sql, path = PATH_DEFAULLT):
