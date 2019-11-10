@@ -17,7 +17,7 @@ def start_defaullt(path = PATH_DEFAULLT):
                       rubric TEXT,
                       description TEXT,
                       status TEXT CHECK (status = 'red' OR status = 'yellow' OR status = 'green'),
-                      address TEXT);
+                      address TEXT NOT NULL);
                    """
     connector(sql, path)
     sql = """create table if not exists attributes
