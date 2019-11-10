@@ -3,22 +3,24 @@ import sqlite3
 PATH_DEFAULLT = 'C:\Materials_temp\PyProj\Resheto_modules\\test.db'
 
 def start_defaullt(path = PATH_DEFAULLT):
-    sql = """create table if not exists ClientList
-                      (id_tg_user integer PRIMARY KEY,
-                      num_id integer,
-                      nickname text,
-                      tgname text,
-                      status text,
-                      message text);
+    sql = """create table if not exists users
+                      (id_user INTEGER PRIMARY KEY,
+                      login TEXT,
+                      pwd_hash TEXT,
+                      role TEXT DEFAULT 'executer' CHECK (role = 'admin' OR role = 'executer' OR role = 'manager'),
+                      rating INTEGER,
+                      );
                    """
     connector(sql, path)
-    # sql = """create table if not exists Banner
-    #                   (id integer PRIMARY KEY,
-    #                   firma text,
-    #                   text_banner text,
-    #                   period int);
-    #                """
-    # connector(sql, path)
+    sql = """create table if not exists documents
+                      (id_doc INTEGER PRIMARY KEY,
+                      rubric TEXT,
+                      description TEXT,
+                      status INTEGER DEFAULT 0,
+                      address TEXT);
+                   """
+    connector(sql, path)
+
     return True
 
 def connector(sql, path = PATH_DEFAULLT):
