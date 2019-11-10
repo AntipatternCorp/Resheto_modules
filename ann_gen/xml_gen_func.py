@@ -14,9 +14,10 @@ from xml.dom import minidom
 </documents_list>
 </collection>
 '''
+PATH_DOCS = 'C:\Materials_temp\PyProj\Resheto_modules\Results\\'
 
-def big_xml_gen(collect_name, documents, attributes):
-    filename = collect_name + '_annotation.xml'
+def big_xml_gen(collect_name, documents, attributes, path = PATH_DOCS):
+    filename = path + collect_name + '_annotation.xml'
     doc_xml = minidom.Document()
 
     root = doc_xml.createElement('collection')

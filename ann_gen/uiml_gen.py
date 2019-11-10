@@ -16,9 +16,10 @@
   </DocumentRubrics>
 </Document>
 '''
+PATH_DOCS = 'C:\Materials_temp\PyProj\Resheto_modules\Results\\'
 
-def one_uiml_gen(collect_name, doc_text, doc_title, attributes):
-    filename = doc_title + '_annotation_' + collect_name + '.uiml'
+def one_uiml_gen(collect_name, doc_text, doc_title, attributes, path = PATH_DOCS):
+    filename = path + doc_title + '_annotation_' + collect_name + '.uiml'
     uiml_txt = '<?xml version="1.0" encoding="utf-16"?>\n<?uimlDocument version="1.0"?>\n'
     uiml_txt = uiml_txt + '<Document>\n <Title Value=\"' + doc_title + '\" />\n'
     uiml_txt = uiml_txt + ' <Text Value=\"' + doc_text + '\" />\n'

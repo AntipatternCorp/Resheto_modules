@@ -1,6 +1,25 @@
 import sqlite3
 
-PATH_DEFAULLT = 'C:\Materials_temp\PyProj\Resheto_modules'
+PATH_DEFAULLT = 'C:\Materials_temp\PyProj\Resheto_modules\\test.db'
+
+def start_defaullt(path = PATH_DEFAULLT):
+    sql = """create table if not exists ClientList
+                      (id_tg_user integer PRIMARY KEY,
+                      num_id integer,
+                      nickname text,
+                      tgname text,
+                      status text,
+                      message text);
+                   """
+    connector(sql, path)
+    # sql = """create table if not exists Banner
+    #                   (id integer PRIMARY KEY,
+    #                   firma text,
+    #                   text_banner text,
+    #                   period int);
+    #                """
+    # connector(sql, path)
+    return True
 
 def connector(sql, path = PATH_DEFAULLT):
     with sqlite3.connect(path) as conn:

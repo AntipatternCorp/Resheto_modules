@@ -4,9 +4,10 @@
 .../
 ++ КК/++ ЯЯ/
 '''
+PATH_DOCS = 'C:\Materials_temp\PyProj\Resheto_modules\Results\\'
 
-def ufod_gen(collect_name, bd_names, attributes):
-    filename = collect_name + '_ufod.txt'
+def ufod_gen(collect_name, bd_names, attributes, path = PATH_DOCS):
+    filename = path + collect_name + '_ufod.txt'
     ufod_str = '++ ДД/++ НН/'
     i=0
     for bd in bd_names:
