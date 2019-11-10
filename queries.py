@@ -8,7 +8,7 @@ def start_defaullt(path = PATH_DEFAULLT):
                       login TEXT,
                       pwd_hash TEXT,
                       role TEXT DEFAULT 'executer' CHECK (role = 'admin' OR role = 'executer' OR role = 'manager'),
-                      rating INTEGER,
+                      rating INTEGER CHECK (rating >= 0 AND rating <= 10),
                       );
                    """
     connector(sql, path)
