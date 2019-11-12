@@ -69,7 +69,7 @@ def choice_attr (attrs1, attrs2): # выбор между 2мя варианта
         i = random.randint(0,len(user_list)-1)
         id_user = user_list[i]
         #пусть будет три типа связи: author, executor, checker
-        rel = '\'' + str(id_user) + '\',  \'' + str(doc) + '\',  \'' + 'checker'
+        rel = '\'' + str(id_user) + '\',  \'' + str(doc) + '\',  \'' + 'checker\''
         insert_data(table_name = 'relation', data = rel)
         #добавили задание эксперту с более высоким рейтингом
         #по окончании его работы вызывается функция check

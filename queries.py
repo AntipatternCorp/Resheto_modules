@@ -8,7 +8,7 @@ def start_defaullt(path = PATH_DEFAULLT):
                       login TEXT,
                       pwd_hash TEXT,
                       role TEXT DEFAULT 'executor' CHECK (role = 'admin' OR role = 'executor' OR role = 'manager'),
-                      rating INTEGER CHECK (rating >= 0 AND rating <= 10),
+                      rating INTEGER CHECK (rating >= 0 AND rating <= 100),
                       );
                    """
     connector(sql, path)
@@ -22,8 +22,8 @@ def start_defaullt(path = PATH_DEFAULLT):
     connector(sql, path)
     sql = """create table if not exists attributes
                       (id_attr INTEGER PRIMARY KEY,
-                      id_doc INTEGER,
-                      id_user INTEGER, 
+                      id_user INTEGER,
+                      id_doc INTEGER,                       
                       attr_text TEXT,
                       description TEXT,
                       status INTEGER DEFAULT 0 CHECK (status >= 0 AND status <=1),

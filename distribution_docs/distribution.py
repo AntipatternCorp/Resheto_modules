@@ -5,11 +5,11 @@ def distrib_docs(rubric_name, user_id_list):
     i = 0
     max_i = len(user_id_list)
     for d in doc_list:
-        rel = '\'' + str(user_id_list[i]) + '\',  \'' + str(d) + '\',  \'' + 'executor'
+        rel = '\'' + str(user_id_list[i]) + '\',  \'' + str(d) + '\',  \'' + 'executor\''
         insert_data(table_name = 'relation', data = rel)
         i = i + 1
         if i == max_i:
             i = 0
-        rel = '\'' + str(user_id_list[i]) + '\',  \'' + str(d) + '\',  \'' + 'executor'
+        rel = '\'' + str(user_id_list[i]) + '\',  \'' + str(d) + '\',  \'' + 'executor\''
         insert_data(table_name='relation', data=rel)
     return True
