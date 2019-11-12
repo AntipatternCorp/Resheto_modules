@@ -7,7 +7,7 @@ def start_defaullt(path = PATH_DEFAULLT):
                       (id_user INTEGER PRIMARY KEY,
                       login TEXT,
                       pwd_hash TEXT,
-                      role TEXT DEFAULT 'executer' CHECK (role = 'admin' OR role = 'executer' OR role = 'manager'),
+                      role TEXT DEFAULT 'executor' CHECK (role = 'admin' OR role = 'executor' OR role = 'manager'),
                       rating INTEGER CHECK (rating >= 0 AND rating <= 10),
                       );
                    """
