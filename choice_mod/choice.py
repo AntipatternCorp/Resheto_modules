@@ -73,4 +73,3 @@ def choice_attr (attrs1, attrs2): # выбор между 2мя варианта
         insert_data(table_name = 'relation', data = rel)
         #добавили задание эксперту с более высоким рейтингом
         #по окончании его работы вызывается функция check
-
